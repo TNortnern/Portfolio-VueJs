@@ -1,10 +1,12 @@
 $("document").ready(function () {
 
 if ($(this).scrollTop() >= 763) {
+    if(!$("#content").hasClass("flipNav")){
     $("#content").addClass("flipNav");
+    }
 
 
-}
+};
     // navbar slide up on scroll down, slide down on scroll up
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
@@ -65,6 +67,49 @@ if ($(this).scrollTop() >= 763) {
 
     })
 
+    // ajax contact form
+    $('#contact-form').on('submit', function (e) {
+        //Stop the form from submitting itself to the server.
+        e.preventDefault();
+        $('#contact-form').attr("onsubmit", "return false");
+        let name = $('#name').val();
+        let email = $('#email').val();
+        let number = $('#number').val();
+        let message = $('#message').val();
+        let submit = $('#sendmessage').val();
+
+        $("#sendmessage").addClass("disabled");
+        $.ajax({
+            type: "POST",
+            url: 'ajax.php',
+            data: {
+                name: name,
+                email: email,
+                number: number,
+                message: message,
+                sendmessage: submit
+            },
+            success: function (data) {
+                let contactinputs = document.querySelectorAll("#contact-form input");
+                
+                $("#sendmessage").removeClass("disabled");
+                $("#messagesent").fadeIn();
+                $("#message").val("");
+                $("#contact-form input").each(function () {
+                    $(this).val("");
+                });
+            }
+        });
+    });
+
+$("#message").keyup(function(){
+     $("#messagesent").fadeOut("fast");
+});
+$("#contact-form input").each(function () {
+    $(this).keyup(function(){
+        $("#messagesent").fadeOut("fast");
+    });
+});
 
 
 

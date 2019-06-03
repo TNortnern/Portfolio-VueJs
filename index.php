@@ -1,6 +1,6 @@
 <?php
 include "./database/database.php";
-if(isset($_POST['sendmessage'])){
+if (isset($_POST['sendmessage'])) {
     receieveMessage();
 }
 
@@ -285,31 +285,32 @@ if(isset($_POST['sendmessage'])){
         <div class="container" style="border:4px dotted gray">
             <h3 class="center-align">Contact Me</h3>
             <div class="row">
-                <form class="col s12" method="POST">
+                <form id="contact-form" class="col s12" method="POST">
                     <div class="input-field col s12">
                         <input required placeholder="Your Name" id="name" type="text" name="name" class="validate">
                         <label for="name">Name</label>
                         <span class="helper-text" data-error="Enter a valid name." data-success="&checkmark;"></span>
                     </div>
                     <div class="input-field col s12">
-                        <input required placeholder="Your E-mail" id="email" type="text" name="email" class="validate" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <input required placeholder="Your E-mail" id="email" type="email" name="email" class="validate" >
                         <label for="email">E-mail</label>
                         <span class="helper-text" data-error="Enter a valid e-mail." data-success="&checkmark;"></span>
                     </div>
                     <div class="input-field col s12">
-                        <input required placeholder="Your Number(optional)" id="number" type="tel" name="number" maxlength="10">
+                        <input placeholder="Your Number(optional)" id="number" type="tel" name="number" maxlength="10">
                         <label for="number">Phone Number</label>
                     </div>
                     <div class="input-field col s12">
-                        <textarea placeholder="Your Message" name="message" required id="message" class="materialize-textarea validate"></textarea>
+                        <textarea placeholder="Your Message" name="message" id="message" required class="materialize-textarea validate"></textarea>
                         <label for="message">Message</label>
                         <span class="helper-text" data-error="Leave me a message please." data-success="&checkmark;"></span>
                     </div>
                     <div class="center-align">
-                        <button type="submit" name="sendmessage" class="btn">Send Message</button>
+                        <button id="sendmessage" type="submit" value="set" name="sendmessage" class="btn">Send Message</button>
                     </div>
-
+                    <div id="messagesent" class="alert alert-success center-align">Your message was sent succesfully. I'll get back to you ASAP.</div>
                 </form>
+
             </div>
         </div>
     </section>
@@ -333,7 +334,9 @@ if(isset($_POST['sendmessage'])){
     <script src="js/projects.js"></script>
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    <script>
+        
+    </script>
 
 </body>
 
