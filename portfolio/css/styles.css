@@ -196,7 +196,8 @@ a.active {
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
-    width: 28% !important
+    width: 23% !important;
+    margin-right: 4px;
 }
 
 #technologies .card:hover {
